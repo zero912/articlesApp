@@ -19,6 +19,11 @@ const routes = [
     path: '/nav',
     name: 'nav',
     component: () => import('../views/Nav.vue')
+  },
+  {
+    path: '/container',
+    name: 'container',
+    component: () => import('../views/Container.vue')
   }
 ]
 
