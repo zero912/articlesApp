@@ -14,6 +14,7 @@
     <el-table-column label="操作" align="center">
       <template slot-scope="scope">
         <el-button type="primary" icon="el-icon-edit" circle></el-button>
+        <!-- scope.$index返回当前行的下标 -->
         <el-button 
           @click="del(scope.$index)"
           type="danger" icon="el-icon-delete" circle></el-button>
@@ -37,7 +38,7 @@ export default {
   },
   methods: {
     del(index){
-      alert(index)
+      this.tableData.splice(index, 1)
     }
   }
 };
