@@ -34,86 +34,20 @@
               <i class="el-icon-menu"></i>
               table表格
             </el-menu-item>
-            <el-menu-item index="1">
-              <i class="el-icon-menu"></i>
-              Container容器
-            </el-menu-item>
-            <el-menu-item index="2">
-              <i class="el-icon-menu"></i>
-              Form表单
-            </el-menu-item>
-            <el-menu-item index="3">
-              <i class="el-icon-menu"></i>
-              table表格
-            </el-menu-item>
-            <el-menu-item index="1">
-              <i class="el-icon-menu"></i>
-              Container容器
-            </el-menu-item>
-            <el-menu-item index="2">
-              <i class="el-icon-menu"></i>
-              Form表单
-            </el-menu-item>
-            <el-menu-item index="3">
-              <i class="el-icon-menu"></i>
-              table表格
-            </el-menu-item>
-            <el-menu-item index="1">
-              <i class="el-icon-menu"></i>
-              Container容器
-            </el-menu-item>
-            <el-menu-item index="2">
-              <i class="el-icon-menu"></i>
-              Form表单
-            </el-menu-item>
-            <el-menu-item index="3">
-              <i class="el-icon-menu"></i>
-              table表格
-            </el-menu-item>
-            <el-menu-item index="1">
-              <i class="el-icon-menu"></i>
-              Container容器
-            </el-menu-item>
-            <el-menu-item index="2">
-              <i class="el-icon-menu"></i>
-              Form表单
-            </el-menu-item>
-            <el-menu-item index="3">
-              <i class="el-icon-menu"></i>
-              table表格
-            </el-menu-item>
-            <el-menu-item index="1">
-              <i class="el-icon-menu"></i>
-              Container容器
-            </el-menu-item>
-            <el-menu-item index="2">
-              <i class="el-icon-menu"></i>
-              Form表单
-            </el-menu-item>
-            <el-menu-item index="3">
-              <i class="el-icon-menu"></i>
-              table表格
-            </el-menu-item>
-            <el-menu-item index="1">
-              <i class="el-icon-menu"></i>
-              Container容器
-            </el-menu-item>
-            <el-menu-item index="2">
-              <i class="el-icon-menu"></i>
-              Form表单
-            </el-menu-item>
-            <el-menu-item index="3">
-              <i class="el-icon-menu"></i>
-              table表格
-            </el-menu-item>
           </el-menu>
         </el-aside>
-        <el-main>内容</el-main>
+        <el-main class="main">
+          <!-- 占位符匹配二级路由 -->
+          <router-view />  
+        </el-main>
       </el-container>
     </el-container>
   </div>
 </template>
 <style scoped>
+.main {
+  height: calc(100vh - 60px);
+}
 .aside-menu{
   height: calc(100vh - 60px);
   padding-left: 15px;

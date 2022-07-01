@@ -28,7 +28,17 @@ const routes = [
   {
     path: '/components',
     name: 'components',
-    component: () => import('../views/Components.vue')
+    component: () => import('../views/Components.vue'),
+    children: [{
+      path: 'container',
+      component: () => import('../views/Container.vue')
+    },{
+      path: 'table',
+      component: () => import('../views/Table.vue')
+    },{
+      path: 'form',
+      component: () => import('../views/Form.vue')
+    },]
   }
 ]
 
