@@ -18,19 +18,20 @@
       <el-container>
         <el-aside width="200px" class="aside-menu scroll">
           <el-menu 
+            router
             default-active="1"
             background-color="#444"
             text-color="#bbb"
             active-text-color="#fff">
-            <el-menu-item index="1">
+            <el-menu-item index="/components/container">                            
               <i class="el-icon-menu"></i>
               Container容器
             </el-menu-item>
-            <el-menu-item index="2">
+            <el-menu-item index="/components/form">
               <i class="el-icon-menu"></i>
               Form表单
             </el-menu-item>
-            <el-menu-item index="3">
+            <el-menu-item index="/components/table">
               <i class="el-icon-menu"></i>
               table表格
             </el-menu-item>
