@@ -29,6 +29,9 @@ const routes = [
     path: '/components',
     name: 'components',
     component: () => import('../views/Components.vue'),
+    // 重定向:
+    // 当直接访问/components时 自动跳转到该路径
+    redirect: '/components/container', 
     children: [{
       path: 'container',
       component: () => import('../views/Container.vue')

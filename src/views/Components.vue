@@ -19,7 +19,7 @@
         <el-aside width="200px" class="aside-menu scroll">
           <el-menu 
             router
-            default-active="1"
+            :default-active="$route.path"
             background-color="#444"
             text-color="#bbb"
             active-text-color="#fff">
