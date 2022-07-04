@@ -29,7 +29,7 @@
       :state="repwdState"
       @blur.native.capture="checkRepwd"
     ></mt-field>
-    <mt-button size="large" type="primary">立即注册</mt-button>
+    <mt-button @click="checkForm" size="large" type="primary">立即注册</mt-button>
   </div>
 </template>
 <script>
@@ -49,24 +49,37 @@ export default {
       let exp = /^\w{3,15}$/;
       if(exp.test(this.name)){  // 验证通过
         this.nameState = 'success'
+        return true;
       }else {  // 验证失败
         this.nameState = 'error'
+        return false;
       }
     },
     checkPwd(){  /** 验证密码 6位数字 */
       let exp = /^\d{6}$/;
       if(exp.test(this.pwd)){  // 验证通过
         this.pwdState = 'success'
+        return true;
       }else {  // 验证失败
         this.pwdState = 'error'
+        return false;
       }
     },
     checkRepwd(){  /** 验证重复密码 与密码相同 */
       let exp = /^\d{6}$/;
       if(exp.test(this.repwd) && this.pwd===this.repwd){  // 验证通过
         this.repwdState = 'success'
+        return true;
       }else {  // 验证失败
         this.repwdState = 'error'
+        return false;
+      }
+    },
+    checkForm(){ /** 当点击提交按钮时，执行 */
+      if(this.checkName() && this.checkPwd() && this.checkRepwd()){
+        console.log('验证成功...');
+      }else{
+        console.log('验证失败...');
       }
     },
   }
