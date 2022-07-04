@@ -3,10 +3,10 @@
     <!-- testing/Nav.vue -->
     <mt-navbar v-model="selected">
       <mt-tab-item id="1">
-        <img src="@/assets/001.png" slot="icon" alt="">
+        <img src="/001.png" slot="icon" alt="">
         推荐</mt-tab-item>
       <mt-tab-item id="2">
-        <img src="../assets/004.png" slot="icon" alt="">
+        <img src="/004.png" slot="icon" alt="">
         科技</mt-tab-item>
       <mt-tab-item id="3">
         <img src="@/assets/007.png" slot="icon" alt="">
