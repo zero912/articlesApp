@@ -12,7 +12,8 @@
       placeholder="请输入用户名" 
       label="用户名"
       v-model="name"
-      @blur.native="checkName"></mt-field>
+      :state="nameState"
+      @blur.native.capture="checkName"></mt-field>
     <mt-field type="password" placeholder="请输入密码" label="密码"></mt-field>
     <mt-field
       type="password"
@@ -27,17 +28,24 @@ export default {
   data() {
     return {
       name: '',  // 绑定用户名
+      nameState: '', // 用户名输入框的状态
     }
   },
   methods: {
     checkName(){  /** 验证用户名 */
       let exp = /^\w{3,15}$/;
       if(exp.test(this.name)){  // 验证通过
-        console.log('通过..');
+        this.nameState = 'success'
       }else {  // 验证失败
-        console.log('失败..');
+        this.nameState = 'error'
       }
-    }
+    },
+    checkPwd(){  /** 验证密码 6位数字 */
+
+    },
+    checkRepwd(){  /** 验证重复密码 与密码相同 */
+
+    },
   }
 }
 </script>
