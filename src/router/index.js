@@ -24,6 +24,11 @@ const routes = [
     path: '/field',
     name: 'field',
     component: () => import('../testing/Field.vue')
+  },
+  {
+    path: '/nav',
+    name: 'nav',
+    component: () => import('../testing/Nav.vue')
   }
 
 ]
