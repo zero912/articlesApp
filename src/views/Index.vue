@@ -35,7 +35,14 @@
       </mt-swipe-item>
     </mt-swipe>
     <!-- 列表项 -->
-    <article-item v-for="i in 10" :key="i"></article-item>
+    
+    <!-- 
+      遍历生成每一个列表项，同时向子组件传参：将当前对象传给
+      article-item组件的article自定义属性
+     -->
+    <article-item :article="item" v-for="item in articleList" :key="item.id">
+    </article-item>
+
     <div style="height:60px;"></div>
   </div>
 </template>
@@ -48,7 +55,8 @@ export default {
   data() {
     return {
       selected: '1',
-      cats: null,   // 绑定类别列表
+      cats: null,       // 绑定类别列表
+      articleList: [],  // 绑定文章列表
     }
   },
   mounted(){
@@ -57,6 +65,13 @@ export default {
       console.log('加载类别列表：', res)
       // 把 res.data.results 存入 data.cats 变量中
       this.cats = res.data.results
+    })
+
+    // 发送http请求，加载UI类别下首页文章列表
+    this.axios.get(`/articles?cid=1&page=1`).then(res=>{
+      console.log('加载UI类别首页文章列表', res)
+      // 将res.data.results 数组存入 data的articleList变量中
+      this.articleList = res.data.results
     })
   }
 }
@@ -67,3 +82,4 @@ export default {
   color: white;
 }
 </style>
+

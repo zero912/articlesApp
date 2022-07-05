@@ -1,6 +1,8 @@
 .DS_Store
 node_modules
 /dist
+/public/articles
+/public/avatar
 
 
 # local env files

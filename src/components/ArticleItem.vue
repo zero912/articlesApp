@@ -3,21 +3,18 @@
     <!-- 单一文章信息开始 -->
     <div class="articleItem">
       <!-- 文章标题开始 -->
-      <div class="articleItem-header">文章标题</div>
+      <div class="articleItem-header">{{article.subject}}</div>
       <!-- 文章标题结束 -->
       <!-- 文章图文信息开始 -->
       <div class="articleItem-wrapper">
         <!-- 文章图像开始  -->
         <div class="articleImg">
-          <img src="../assets/logo.png" />
+          <img :src="article.image" />
         </div>
         <!-- 文章图像结束 -->
         <!-- 文章简介开始 -->
         <div class="articleDes">
-          文章描述文章描述文章描述文章描述文章描述
-          文章描述文章描述文章描述文章描述文章描述
-          文章描述文章描述文章描述文章描述文章描述
-          文章描述文章描述文章描述文章描述文章描述
+          {{article.description}}
         </div>
         <!-- 文章简介结束 -->
       </div>
@@ -29,6 +26,9 @@
 
 <script>
 export default {
+  // 声明自定义属性article，
+  // 用于接收传过来的文章对象{id,subject,description,image}
+  props: ['article'],
   data() {
     return {
       navactive: "1",
