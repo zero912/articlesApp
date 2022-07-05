@@ -4,7 +4,7 @@
     <router-view />
 
     <!-- 底部选项卡 -->
-    <mt-tabbar v-model="tabSelected">
+    <mt-tabbar fixed v-model="tabSelected">
       <mt-tab-item id="index">
         <img :src="require(
           `@/assets/index_${tabSelected=='index'?1:0}.png`)" slot="icon" alt="">             
