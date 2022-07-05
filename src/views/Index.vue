@@ -17,7 +17,10 @@
       <mt-tab-item id="4">交互</mt-tab-item>
     </mt-navbar>
     <!-- 轮播图 -->
-    <mt-swipe  style="height:200px;">
+    <mt-swipe  
+      :speed="150"
+      :auto="4000"
+      style="height:56.2vw;">
       <mt-swipe-item>
         <img style="width:100%;" src="/1.jpg">
       </mt-swipe-item>
