@@ -2,9 +2,9 @@
   <div>
     <!-- views/Register.vue -->
     <!-- 标题栏 -->
-    <mt-header title="用户注册">
+    <mt-header title="用户登录">
       <mt-button icon="back" slot="left"></mt-button>
-      <router-link to="/login" slot="right">登录</router-link>
+      <router-link to="/register" slot="right">新用户</router-link>
     </mt-header>
     <!-- 表单 -->
     <mt-field 
@@ -21,15 +21,7 @@
       v-model="pwd"
       :state="pwdState"
       @blur.native.capture="checkPwd"></mt-field>
-    <mt-field
-      type="password"
-      placeholder="请再次输入密码"
-      label="确认密码"
-      v-model="repwd"
-      :state="repwdState"
-      @blur.native.capture="checkRepwd"
-    ></mt-field>
-    <mt-button @click="checkForm" size="large" type="primary">立即注册</mt-button>
+    <mt-button @click="checkForm" size="large" type="primary">安全登录</mt-button>
   </div>
 </template>
 <script>
@@ -40,8 +32,6 @@ export default {
       nameState: '', // 用户名输入框的状态
       pwd: '',
       pwdState: '',
-      repwd: '',
-      repwdState: '',
     }
   },
   methods: {
@@ -65,18 +55,8 @@ export default {
         return false;
       }
     },
-    checkRepwd(){  /** 验证重复密码 与密码相同 */
-      let exp = /^\d{6}$/;
-      if(exp.test(this.repwd) && this.pwd===this.repwd){  // 验证通过
-        this.repwdState = 'success'
-        return true;
-      }else {  // 验证失败
-        this.repwdState = 'error'
-        return false;
-      }
-    },
     checkForm(){ /** 当点击提交按钮时，执行 */
-      if(this.checkName() && this.checkPwd() && this.checkRepwd()){
+      if(this.checkName() && this.checkPwd()){
         console.log('验证成功...');
       }else{
         console.log('验证失败...');

@@ -6,9 +6,16 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/home',
     name: 'home',
-    component: HomeView
+    component: HomeView,
+    children: [{
+      path: 'index',
+      component: () => import('../views/Index.vue')
+    },{
+      path: 'me',
+      component: () => import('../views/Me.vue')
+    },]
   },
   {
     path: '/about',
@@ -19,6 +26,11 @@ const routes = [
     path: '/register',
     name: 'register',
     component: () => import('../views/Register.vue')
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/Login.vue')
   },
   {
     path: '/field',
