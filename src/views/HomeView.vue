@@ -22,8 +22,19 @@
 export default {
   data() {
     return {
-      tabSelected: 'index'
+      tabSelected: this.$route.path.split('/').pop()
     }
   },
+  watch: {
+    tabSelected(newval, oldval){
+      console.log(`tabSelected从 ${oldval} 变成了 ${newval} `)
+      // this.$router.push(`/home/${newval}`)
+      if(newval=='me'){
+        this.$router.push('/home/me')
+      }else if(newval=='index'){
+        this.$router.push('/home/index')
+      } 
+    }
+  }
 }
 </script>
