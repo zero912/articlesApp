@@ -16,6 +16,19 @@
       <mt-tab-item id="3">网页</mt-tab-item>
       <mt-tab-item id="4">交互</mt-tab-item>
     </mt-navbar>
+    <!-- 轮播图 -->
+    <mt-swipe  style="height:200px;">
+      <mt-swipe-item>
+        <img style="width:100%;" src="/1.jpg">
+      </mt-swipe-item>
+      <mt-swipe-item>
+        <img style="width:100%;" src="/2.jpg">
+      </mt-swipe-item>
+      <mt-swipe-item>
+        <img style="width:100%;" src="/3.jpg">
+      </mt-swipe-item>
+    </mt-swipe>
+
   </div>
 </template>
 <script>
