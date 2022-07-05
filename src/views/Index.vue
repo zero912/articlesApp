@@ -12,11 +12,12 @@
     <!-- 导航 -->
     <mt-navbar
       style="margin-top:40px;"
-      v-model="selected" fixed>
-      <mt-tab-item id="1">UI</mt-tab-item>
-      <mt-tab-item id="2">电商</mt-tab-item>
-      <mt-tab-item id="3">网页</mt-tab-item>
-      <mt-tab-item id="4">交互</mt-tab-item>
+      v-model="selected" fixed v-if="cats">
+      <mt-tab-item 
+        :id="item.id+''" 
+        v-for="item in cats" :key="item.id">
+        {{item.category_name}}
+      </mt-tab-item>
     </mt-navbar>
     <!-- 轮播图 -->
     <mt-swipe  
@@ -46,13 +47,16 @@ export default {
   },
   data() {
     return {
-      selected: '1'
+      selected: '1',
+      cats: null,   // 绑定类别列表
     }
   },
   mounted(){
     // 发送http请求， 加载类别列表
     this.axios.get('/category').then(res=>{
       console.log('加载类别列表：', res)
+      // 把 res.data.results 存入 data.cats 变量中
+      this.cats = res.data.results
     })
   }
 }
