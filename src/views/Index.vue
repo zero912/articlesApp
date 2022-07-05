@@ -49,6 +49,12 @@ export default {
       selected: '1'
     }
   },
+  mounted(){
+    // 发送http请求， 加载类别列表
+    this.axios.get('/category').then(res=>{
+      console.log('加载类别列表：', res)
+    })
+  }
 }
 </script>
 
