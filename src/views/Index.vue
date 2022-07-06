@@ -43,7 +43,9 @@
     <div v-infinite-scroll="loadMore"
          infinite-scroll-distance="50"
          :infinite-scroll-immediate-check="true">
-      <article-item :article="item" v-for="item in articleList" :key="item.id">
+      <article-item 
+        @click.native="$router.push(`/article?id=${item.id}`)"  
+        :article="item" v-for="item in articleList" :key="item.id">
       </article-item>
       <div style="height:60px;"></div>
     </div>
