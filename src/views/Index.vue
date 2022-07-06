@@ -91,11 +91,9 @@ export default {
       let cid = this.selected   // 当前选中项的类别ID
       let page = ++this.page    // 目标页码
       console.log(`加载类别：${cid}  的第 ${page} 页数据.`)
-      this.axios.get(`/articles?cid=${cid}&page=${page}`).then(res=>{
-        console.log('下一页数据', res)
-        // 将新数组： res.data.results 追加到旧数组的末尾 this.articleList
-        this.articleList.push(...res.data.results)
-        this.isLoading = false  // 开锁
+      this.loadArticles(cid, page, (articles)=>{
+        this.articleList.push(...articles)  // 追加到旧数组末尾
+        this.isLoading = false   // 开锁
       })
     }
   },
