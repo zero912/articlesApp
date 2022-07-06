@@ -121,10 +121,8 @@ export default {
 
       console.log(`顶部导航选中项从：${oldval} 变成了${newval}`);
       // newval就是选中项的id值   发送http请求，访问当前类别的首页
-      this.axios.get(`/articles?cid=${newval}&page=1`).then(res=>{
-        console.log('当前选中类别的首页数据：', res);
-        // 替换当前列表
-        this.articleList = res.data.results
+      this.loadArticles(newval, 1, (articles)=>{
+        this.articleList = articles
       })
     }
   }
