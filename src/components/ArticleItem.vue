@@ -9,7 +9,7 @@
       <div class="articleItem-wrapper">
         <!-- 文章图像开始  -->
         <div class="articleImg">
-          <img :src="article.image" />
+          <img v-if="article.image" :src="`/articles/${article.image}`" />
         </div>
         <!-- 文章图像结束 -->
         <!-- 文章简介开始 -->

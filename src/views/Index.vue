@@ -48,6 +48,7 @@
 </template>
 <script>
 import ArticleItem from '@/components/ArticleItem.vue'
+import { watch } from 'vue'
 export default {
   components: {
     ArticleItem
@@ -73,6 +74,18 @@ export default {
       // 将res.data.results 数组存入 data的articleList变量中
       this.articleList = res.data.results
     })
+  },
+
+  watch:{
+    selected(newval, oldval){ // 监听顶部导航选中项的变化
+      console.log(`顶部导航选中项从：${oldval} 变成了${newval}`);
+      // newval就是选中项的id值   发送http请求，访问当前类别的首页
+      this.axios.get(`/articles?cid=${newval}&page=1`).then(res=>{
+        console.log('当前选中类别的首页数据：', res);
+        // 替换当前列表
+        this.articleList = res.data.results
+      })
+    }
   }
 }
 </script>
