@@ -8,6 +8,10 @@ import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 Vue.use(MintUI)
 
+// 引入momentjs
+import moment from 'moment'
+Vue.prototype.moment = moment
+
 // 引入axios
 import axios from 'axios'
 import VueAxios from 'vue-axios'

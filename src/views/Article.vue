@@ -17,7 +17,9 @@
           {{ article.subject }}
         </div>
         <div class="question-header-datetime">
-          2020年11月30日16:49 {{ article.created_at }}
+          2020年11月30日16:49 
+          {{ moment.unix(article.created_at).format(
+            'yyyy年MM月DD日 HH:mm') }}     
         </div>
       </div>
       <!-- 标题结束 -->
