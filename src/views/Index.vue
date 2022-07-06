@@ -62,12 +62,16 @@ export default {
       cats: null,       // 绑定类别列表
       articleList: [],  // 绑定文章列表
       page: 1,          // 绑定当前页码
+      isLoading: false, // 绑定是否正在加载中
     }
   },
 
   methods: {
     /** 当滚动到底部，自动加载下一页 */
     loadMore(){
+      if(this.isLoading) return;
+
+      this.isLoading = true   // 上锁
       console.log('到底了....');
       // 准备参数，发送http请求
       let cid = this.selected   // 当前选中项的类别ID
@@ -75,6 +79,9 @@ export default {
       console.log(`加载类别：${cid}  的第 ${page} 页数据.`)
       this.axios.get(`/articles?cid=${cid}&page=${page}`).then(res=>{
         console.log('下一页数据', res)
+        // 将新数组： res.data.results 追加到旧数组的末尾 this.articleList
+        this.articleList.push(...res.data.results)
+        this.isLoading = false  // 开锁
       })
     }
   },
@@ -97,6 +104,9 @@ export default {
 
   watch:{
     selected(newval, oldval){ // 监听顶部导航选中项的变化
+      this.page = 1
+      window.scrollTo(0, 0)
+
       console.log(`顶部导航选中项从：${oldval} 变成了${newval}`);
       // newval就是选中项的id值   发送http请求，访问当前类别的首页
       this.axios.get(`/articles?cid=${newval}&page=1`).then(res=>{
