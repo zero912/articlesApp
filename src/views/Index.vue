@@ -40,10 +40,14 @@
       遍历生成每一个列表项，同时向子组件传参：将当前对象传给
       article-item组件的article自定义属性
      -->
-    <article-item :article="item" v-for="item in articleList" :key="item.id">
-    </article-item>
+    <div v-infinite-scroll="loadMore"
+         infinite-scroll-distance="50"
+         :infinite-scroll-immediate-check="true">
+      <article-item :article="item" v-for="item in articleList" :key="item.id">
+      </article-item>
+      <div style="height:60px;"></div>
+    </div>
 
-    <div style="height:60px;"></div>
   </div>
 </template>
 <script>
@@ -54,11 +58,27 @@ export default {
   },
   data() {
     return {
-      selected: '1',
+      selected: '1',    // 绑定顶部导航选中项的类别ID
       cats: null,       // 绑定类别列表
       articleList: [],  // 绑定文章列表
+      page: 1,          // 绑定当前页码
     }
   },
+
+  methods: {
+    /** 当滚动到底部，自动加载下一页 */
+    loadMore(){
+      console.log('到底了....');
+      // 准备参数，发送http请求
+      let cid = this.selected   // 当前选中项的类别ID
+      let page = ++this.page    // 目标页码
+      console.log(`加载类别：${cid}  的第 ${page} 页数据.`)
+      this.axios.get(`/articles?cid=${cid}&page=${page}`).then(res=>{
+        console.log('下一页数据', res)
+      })
+    }
+  },
+
   mounted(){
     // 发送http请求， 加载类别列表
     this.axios.get('/category').then(res=>{
