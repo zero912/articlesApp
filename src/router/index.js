@@ -45,6 +45,11 @@ const routes = [
     path: '/nav',
     name: 'nav',
     component: () => import('../testing/Nav.vue')
+  },
+  {
+    path: '/inf',
+    name: 'inf',
+    component: () => import('../testing/Inf.vue')
   }
 
 ]

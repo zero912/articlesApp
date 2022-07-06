@@ -48,7 +48,6 @@
 </template>
 <script>
 import ArticleItem from '@/components/ArticleItem.vue'
-import { watch } from 'vue'
 export default {
   components: {
     ArticleItem
