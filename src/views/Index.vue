@@ -67,6 +67,20 @@ export default {
   },
 
   methods: {
+
+    /** 通过cid与page查询文章列表
+     *  cid：类别ID
+     *  page： 页码
+     *  通过callback的方式返回查询到的文章列表
+     */
+    loadArticles(cid, page, callback){
+      this.axios.get(
+        `/articles?cid=${cid}&page=${page}`).then(res=>{
+          let articles = res.data.results // 接收查询结果数组
+          callback(articles) // 调用callback方法，执行后续业务
+      })
+    },
+
     /** 当滚动到底部，自动加载下一页 */
     loadMore(){
       if(this.isLoading) return;
@@ -95,10 +109,8 @@ export default {
     })
 
     // 发送http请求，加载UI类别下首页文章列表
-    this.axios.get(`/articles?cid=1&page=1`).then(res=>{
-      console.log('加载UI类别首页文章列表', res)
-      // 将res.data.results 数组存入 data的articleList变量中
-      this.articleList = res.data.results
+    this.loadArticles(1, 1, (articles)=>{
+      this.articleList = articles  // 替换旧数组即可
     })
   },
 
