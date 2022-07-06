@@ -74,10 +74,16 @@ export default {
      *  通过callback的方式返回查询到的文章列表
      */
     loadArticles(cid, page, callback){
+      this.$indicator.open({
+        text:'加载中...',
+        spinnerType: 'snake',
+      })
+
       this.axios.get(
         `/articles?cid=${cid}&page=${page}`).then(res=>{
           let articles = res.data.results // 接收查询结果数组
           callback(articles) // 调用callback方法，执行后续业务
+          this.$indicator.close()
       })
     },
 
