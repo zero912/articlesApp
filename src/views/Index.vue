@@ -3,7 +3,10 @@
     <!-- views/Index.vue -->
     <!-- 标题栏 -->
     <mt-header title="学前端，到达内" fixed>
-      <div slot="right">
+      <div slot="right" v-if="$store.state.username">
+        欢迎：{{$store.state.username}}
+      </div>
+      <div slot="right" v-else>
         <router-link class="link" to="/login">登录</router-link>
         &nbsp;
         <router-link class="link" to="/register">注册</router-link>

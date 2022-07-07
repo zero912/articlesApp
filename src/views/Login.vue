@@ -68,6 +68,10 @@ export default {
               this.$toast({
                 message: '登录完成，跳转首页...'
               })
+              // 把用户名存入vuex，供以后使用
+              // 通过vuex，执行saveUsername方法，修改state.         
+              this.$store.commit('saveUsername', this.name)
+
               this.$router.push('/')
             }else {
               this.$messagebox({
