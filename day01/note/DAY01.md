@@ -198,6 +198,46 @@ preload:
 <video controls src="视频路径"></video>
 ```
 
+**常用属性：**
+
+```html
+<video controls        是否显示控制面板
+       src="音频路径"    
+       autoplay        是否自动播放
+       muted           是否静音
+       loop            是否单曲循环
+       preload="音频源预加载模式：auto|metadata|none"        
+       width="播放器的宽度"
+       height="播放器的高度"
+       poster="海报帧，表示视频未播放时的图片路径"
+     >
+</video>
+```
+
+
+
+#### 音视频的DOM相关操作
+
+```html
+<audio id="audio" src="./xxx.mp3"></audio>
+```
+
+```javascript
+let audio = document.getElementById('audio')
+// 调用方法
+audio.play()
+audio.pause()
+// 访问属性
+audio.duration
+audio.volume
+// 绑定事件
+audio.addEventListener('play', function(){ 事件处理业务逻辑 })
+```
+
+
+
+
+
 
 
 

@@ -15,7 +15,23 @@
     preload="auto">
   </audio>
 
-  <video controls src="./assets/let_it_go.mp4"></video>
+  <video 
+    controls 
+    src="./assets/let_it_go.mp4"
+    width="640"
+    height="360"
+    style="background-color: #000;"
+    poster="./assets/logo.jpg"
+    id="video"></video>
+  
+  <button id="btn">点我获取播放器的属性</button>
+  <script>
+    btn.addEventListener('click', function(){
+      console.log('视频总时长(秒)：' + video.duration)
+      console.log('播放视频的当前位置(秒)：' + video.currentTime)
+    })
+  </script>
+
 </body>
 </html>
 
