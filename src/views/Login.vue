@@ -58,6 +58,26 @@ export default {
     checkForm(){ /** 当点击提交按钮时，执行 */
       if(this.checkName() && this.checkPwd()){
         console.log('验证成功...');
+
+        // 发送http请求，执行注册业务
+        this.axios.post(
+          '/login', 
+          `username=${this.name}&password=${this.pwd}`).then(res=>{
+            console.log('登录请求', res)
+            if(res.data.code == 200){
+              this.$toast({
+                message: '登录完成，跳转首页...'
+              })
+              this.$router.push('/')
+            }else {
+              this.$messagebox({
+                title: '提示',
+                message: '登录失败，账号密码有误'
+              })
+            }
+        })
+
+
       }else{
         console.log('验证失败...');
       }

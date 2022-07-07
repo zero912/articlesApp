@@ -83,6 +83,17 @@ export default {
           '/register', 
           `username=${this.name}&password=${this.pwd}`).then(res=>{
             console.log('注册请求', res)
+            if(res.data.code == 200){
+              this.$toast({
+                message: '注册完成，跳转登录...'
+              })
+              this.$router.push('/login')
+            }else {
+              this.$messagebox({
+                title: '提示',
+                message: '注册失败，账号已存在'
+              })
+            }
         })
 
       }else{
