@@ -106,6 +106,18 @@ export default {
     }
   },
 
+  /** 页面保活后，解锁该生命周期方法。 当页面被激活时执行 */
+  activated(){
+    console.log('activited...')
+    this.isLoading = false  // 启用无限滚动
+  },
+
+  /** 页面保活后，解锁该生命周期方法。 当页面隐藏到后台时执行 */
+  deactivated(){
+    console.log('deactivited...')
+    this.isLoading = true // 禁用无限滚动
+  },
+
   mounted(){
     // 发送http请求， 加载类别列表
     this.axios.get('/category').then(res=>{
