@@ -15,7 +15,10 @@ const routes = [
     component: HomeView,
     children: [{
       path: 'index',
-      component: () => import('../views/Index.vue')
+      component: () => import('../views/Index.vue'),
+      meta: {
+        keepAlive: true  // 希望该路由页面保活
+      }
     },{
       path: 'me',
       component: () => import('../views/Me.vue')

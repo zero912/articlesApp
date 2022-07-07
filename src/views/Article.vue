@@ -3,9 +3,10 @@
     <!-- 顶部导航开始 -->
     <header>
       <mt-header title="学前端，上学问">
-        <router-link slot="left" to="/">
-          <mt-button icon="back"></mt-button>
-        </router-link>
+        <mt-button 
+          @click="$router.go(-1)"
+          slot='left' icon="back">
+        </mt-button>
       </mt-header>
     </header>
     <!-- 导航导航结束 -->
