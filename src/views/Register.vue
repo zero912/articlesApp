@@ -78,6 +78,13 @@ export default {
     checkForm(){ /** 当点击提交按钮时，执行 */
       if(this.checkName() && this.checkPwd() && this.checkRepwd()){
         console.log('验证成功...');
+        // 发送http请求，执行注册业务
+        this.axios.post(
+          '/register', 
+          `username=${this.name}&password=${this.pwd}`).then(res=>{
+            console.log('注册请求', res)
+        })
+
       }else{
         console.log('验证失败...');
       }

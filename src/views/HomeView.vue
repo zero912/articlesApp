@@ -25,8 +25,17 @@ export default {
       tabSelected: this.$route.path.split('/').pop()
     }
   },
+  activated(){
+    // 将tabSelected设置为路由路径末尾单词   index 或 me
+    this.tabSelected = this.$route.path.split('/').pop()
+  },
   watch: {
     tabSelected(newval, oldval){
+      // 防止路由重复跳转
+      if(newval == this.$route.path.split('/').pop()){
+        return;  // 路由地址相同，直接return。
+      }
+
       console.log(`tabSelected从 ${oldval} 变成了 ${newval} `)
       // this.$router.push(`/home/${newval}`)
       if(newval=='me'){
